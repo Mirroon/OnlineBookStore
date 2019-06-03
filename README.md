@@ -61,10 +61,12 @@ A online book store for the homework in JavaEE
 
 * IDEA安装阿里Java代码规范插件
 
-  > **1.打开IDEA，点击File->Settings->Plugins**
+  > **1.打开IDEA，点击File->Settings->Plugins->Marketplace**
   >
-  > **2.查找alibaba插件并安装重启IDEA**
+  > **2.查找alibaba插件并安装Alibaba Java Coding Guidelines**
   >
-  > **3.检查安装是否成功：  Tools >> 阿里编码规约**
+  > **3.重启IDEA**
+  >
+  > **4.检查安装是否成功：  Tools >> 阿里编码规约**
   >
   > 插件在扫描代码后，会将不符合规约的代码按Blocker/Critical/Major三个等级显示在下方可以通过快捷键Ctrl+F1用来查看详细的中文提示信息或快速修复补全规约中的约束代码
