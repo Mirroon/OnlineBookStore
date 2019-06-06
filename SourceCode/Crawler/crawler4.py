@@ -40,7 +40,7 @@ Headers.append({
 
 def get_tag_url():
     url="https://book.douban.com/tag/?icn=index-nav"
-    wb_data=requests.get(url,headers = Headers[random.randint(0, 3)], proxies={'http': '127.0.0.1:1080'})
+    wb_data=requests.get(url,headers = Headers[random.randint(0, 3)])
     soup=BeautifulSoup(wb_data.text,"lxml")
     tags=soup.select("#content > div > div.article > div > div > table > tbody > tr > td > a")
     tag_url=[] 
@@ -51,13 +51,12 @@ def get_tag_url():
     return tag_url
 
 def get_subject_url(url,db):
-    page_url=['?start=0&type=T','?start=20&type=T','?start=40&type=T','?start=60&type=T','?start=80&type=T',
-                '?start=100&type=T','?start=120&type=T','?start=140&type=T','?start=160&type=T',
-                '?start=180&type=T','?start=200&type=T',]
+    page_url=['?start=20&type=T','?start=40&type=T','?start=60&type=T','?start=80&type=T',
+                '?start=100&type=T','?start=120&type=T','?start=140&type=T','?start=160&type=T']
     for page in page_url:
         pageurl = url+page
         try:
-            wb_data = requests.get(pageurl,headers = Headers[random.randint(0, 3)],proxies={'http': '127.0.0.1:1080'})
+            wb_data = requests.get(pageurl,headers = Headers[random.randint(0, 3)])
             soup=BeautifulSoup(wb_data.text,"lxml")
             subjects=soup.select("#subject_list > ul > li > div.pic > a")
             for subject in subjects:
@@ -87,9 +86,9 @@ def dill_price(price):
 
 @clock
 def get_subject(url,subject_cover_src,db):
-    time.sleep(random.uniform(5.1,30.4))
+    time.sleep(random.uniform(3.1,10.4))
     try:
-        wb_data = requests.get(url,headers = Headers[random.randint(0, 3)],proxies={'http': '127.0.0.1:1080'})
+        wb_data = requests.get(url,headers = Headers[random.randint(0, 3)])
         soup=BeautifulSoup(wb_data.text,"lxml")
         name = soup.select("#wrapper > h1 > span")[0].text
         ISBN,author,translator,publisher,publish_date,price = get_subject_detials(soup)
@@ -192,14 +191,14 @@ def get_subject_tag(soup):
     return tags
 
 def get_cover(src):
-    pic = requests.get(src,proxies={'http': '127.0.0.1:1080'})
+    pic = requests.get(src)
     return pic.content
 
 
 if __name__ == "__main__":
     tag_urls = get_tag_url()
 
-    for tag in tag_urls:
+    for tag in tag_urls[-36:]:
         print(tag)
         # 打开数据库连接
         db = pymysql.connect(   host="47.106.241.204",
