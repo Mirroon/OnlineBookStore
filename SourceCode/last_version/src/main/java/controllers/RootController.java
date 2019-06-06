@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/")
 public class RootController {
-
-
-
+    @RequestMapping("hello")
+    String home() {
+        return "<html><h1>Hello World!</h1></html>";
+    }
 }

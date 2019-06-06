@@ -197,7 +197,7 @@ def get_cover(src):
 if __name__ == "__main__":
     tag_urls = get_tag_url()
 
-    for tag in tag_urls[-20:]:
+    for tag in tag_urls[-13:]:
         print(tag)
         # 打开数据库连接
         db = pymysql.connect(   host="47.106.241.204",
