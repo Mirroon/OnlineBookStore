@@ -85,7 +85,7 @@ def dill_price(price):
 
 @clock
 def get_subject(url,subject_cover_src,db):
-    time.sleep(random.uniform(3.1,10.4))
+    time.sleep(random.uniform(5.1,10.4))
     try:
         wb_data = requests.get(url,headers = Headers[random.randint(0, 3)])
         soup=BeautifulSoup(wb_data.text,"lxml")
@@ -197,7 +197,7 @@ def get_cover(src):
 if __name__ == "__main__":
     tag_urls = get_tag_url()
 
-    for tag in tag_urls[108:130]:
+    for tag in tag_urls[-20:]:
         print(tag)
         # 打开数据库连接
         db = pymysql.connect(   host="47.106.241.204",

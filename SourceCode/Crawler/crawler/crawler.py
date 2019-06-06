@@ -4,8 +4,6 @@ import time
 import re            
 import pymysql       
 import random        
-import requests
-import pymysql
 import time, timeit
  
 def clock(func):
