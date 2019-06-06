@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+
+    <!-- insert user -->
+    <insert id="insert" parameterType="domains.User">
+        INSERT INTO Users(userID, username, password, isAdmin, loginState, name, address, phone, postcode)
+        VALUES(${userID}, ${username}, ${password}, ${isAdmin}, ${loginState}, ${name}, ${address}, ${phone}, ${postcode})
+    </insert>
+
+    <!-- update user -->
+    <update id="update" parameterType="domains.User">
+        UPDATE Users
+        SET password=${password}, isAdmin=${isAdmin}, loginState=${loginState}, name=${name}, address=${address}, phone=${phone}, postcode=${postcode}
+        WHERE userID=${userID}
+    </update>
+
+    <!-- find user by userID-->
+    <select id="findByUserID" parameterType="int" resultType="smm.springboot_ftl.bean.User">
+        SELECT userID, username, password, isAdmin, loginState, name, address, phone, postcode
+        FROM Users
+        WHERE userID = ${userId}
+    </select>
+
+    <!-- find user by username-->
+    <select id="findByUsername" parameterType="int" resultType="smm.springboot_ftl.bean.User">
+        SELECT userID, username, password, isAdmin, loginState, name, address, phone, postcode
+        FROM Users
+        WHERE username = ${username}
+    </select>
+
+    <!-- delete user -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM Users WHERE userID=${userID}
+    </delete>
+</mapper>
