@@ -1,14 +1,12 @@
-package com.scut.onlinebookstore.Controller;
+package com.scut.onlinebookstore.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/")
 public class MainController {
-    @PostMapping(value = "hello")
-    String home() {
+    @RequestMapping("/")
+    public String home() {
         return "Hello World!";
     }
 }

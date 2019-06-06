@@ -1,4 +1,4 @@
-package Controllers.UserInfoControllers;
+package com.scut.onlinebookstore.controller.UserInfoControllers;
 
 /**
  * @author: 何健聪

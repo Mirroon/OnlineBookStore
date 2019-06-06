@@ -1,4 +1,4 @@
-package Controllers.PersonControllers;
+package com.scut.onlinebookstore.controller.PersonControllers;
 
 /**
  * @author: 何健聪

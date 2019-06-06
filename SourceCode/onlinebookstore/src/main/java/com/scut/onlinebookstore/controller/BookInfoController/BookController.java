@@ -1,4 +1,4 @@
-package Controllers.OrderInfoController;
+package com.scut.onlinebookstore.controller.BookInfoController;
 
 /**
  * @author: 何健聪
@@ -6,5 +6,5 @@ package Controllers.OrderInfoController;
  * @version: 1.0
  * @description:
  */
-public class RootOrderInfoController {
+public class BookController {
 }
