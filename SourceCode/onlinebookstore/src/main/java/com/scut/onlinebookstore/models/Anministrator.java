@@ -1,4 +1,4 @@
-package com.scut.onlinebookstore.domains;
+package com.scut.onlinebookstore.models;
 
 /**
  * @author: 何健聪
@@ -6,6 +6,6 @@ package com.scut.onlinebookstore.domains;
  * @version: 1.0
  * @description:
  */
-public class Vip extends User {
+public class Anministrator extends User{
 
 }

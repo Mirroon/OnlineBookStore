@@ -1,4 +1,4 @@
-package com.scut.onlinebookstore.domains;
+package com.scut.onlinebookstore.models;
 
 /**
  * @author: 何健聪
