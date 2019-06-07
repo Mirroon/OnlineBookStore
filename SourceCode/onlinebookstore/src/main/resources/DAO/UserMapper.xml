@@ -3,27 +3,27 @@
 <mapper namespace="mapper.UserMapper">
 
     <!-- insert user -->
-    <insert id="insert" parameterType="domains.User">
+    <insert id="insert" parameterType="com.scut.onlinebookstore.models.User">
         INSERT INTO Users(userID, username, password, isAdmin, loginState, name, address, phone, postcode)
         VALUES(${userID}, ${username}, ${password}, ${isAdmin}, ${loginState}, ${name}, ${address}, ${phone}, ${postcode})
     </insert>
 
     <!-- update user -->
-    <update id="update" parameterType="domains.User">
+    <update id="update" parameterType="com.scut.onlinebookstore.models.User">
         UPDATE Users
         SET password=${password}, isAdmin=${isAdmin}, loginState=${loginState}, name=${name}, address=${address}, phone=${phone}, postcode=${postcode}
         WHERE userID=${userID}
     </update>
 
     <!-- find user by userID-->
-    <select id="findByUserID" parameterType="int" resultType="smm.springboot_ftl.bean.User">
+    <select id="findByUserID" parameterType="int" resultType="com.scut.onlinebookstore.models.User">
         SELECT userID, username, password, isAdmin, loginState, name, address, phone, postcode
         FROM Users
         WHERE userID = ${userId}
     </select>
 
     <!-- find user by username-->
-    <select id="findByUsername" parameterType="int" resultType="smm.springboot_ftl.bean.User">
+    <select id="findByUsername" parameterType="int" resultType="com.scut.onlinebookstore.models.User">
         SELECT userID, username, password, isAdmin, loginState, name, address, phone, postcode
         FROM Users
         WHERE username = ${username}
