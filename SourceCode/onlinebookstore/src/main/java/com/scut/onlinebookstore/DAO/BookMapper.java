@@ -1,4 +1,4 @@
 package com.scut.onlinebookstore.DAO;
 
-public class placeholder {
+public interface BookMapper {
 }
