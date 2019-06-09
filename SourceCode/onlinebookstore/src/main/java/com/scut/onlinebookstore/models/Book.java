@@ -9,11 +9,11 @@ import java.util.List;
  */
 public class Book {
 
-    private String lsbn;
+    private String isbn;
 
-    private Boolean isOnShow = true;
+    private Boolean onShow = true;
 
-    private Boolean isOnShowale = true;
+    private Boolean onSale = true;
 
     private String name;
 
@@ -27,38 +27,40 @@ public class Book {
 
     private Float price;
 
+//    private String cover;
+
     private String bookIntro;
 
     private String authorIntro;
 
     private String content;
 
-    private Integer num;
+    private Integer number;
 
-    private List tags;
+//    private List tags;
 
-    public String getLsbn() {
-        return lsbn;
+    public String getIsbn() {
+        return isbn;
     }
 
-    public void setLsbn(String lsbn) {
-        this.lsbn = lsbn;
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public void setOnShow(Boolean onShow) {
-        isOnShow = onShow;
+        this.onShow = onShow;
     }
 
     public void setOnShowale(Boolean onShowale) {
-        isOnShowale = onShowale;
+        onSale = onShowale;
     }
 
     public boolean isOnShow() {
-        return isOnShow;
+        return onShow;
     }
 
     public boolean isOnShowale() {
-        return isOnShowale;
+        return onSale;
     }
 
     public String getName() {
@@ -109,6 +111,14 @@ public class Book {
         this.price = price;
     }
 
+//    public String getCover() {
+//        return cover;
+//    }
+//
+//    public void setCover(String cover) {
+//        this.cover = cover;
+//    }
+
     public String getBookIntro() {
         return bookIntro;
     }
@@ -133,20 +143,40 @@ public class Book {
         this.content = content;
     }
 
-    public int getNum() {
-        return num;
+    public int getNumber() {
+        return number;
     }
 
-    public void setNum(Integer num) {
-        this.num = num;
+    public void setNumber(Integer number) {
+        this.number = number;
     }
 
-    public List getTags() {
-        return tags;
-    }
+//    public List getTags() {
+//        return tags;
+//    }
 
-    public void setTags(List tags) {
-        this.tags = tags;
-    }
+//    public void setTags(List tags) {
+//        this.tags = tags;
+//    }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "isbn='" + isbn + '\'' +
+                ", onShow=" + onShow +
+                ", onSale=" + onSale +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", translator='" + translator + '\'' +
+                ", publisher='" + publisher + '\'' +
+                ", publishDate='" + publishDate + '\'' +
+                ", price=" + price +
+//                ", cover='" + cover + '\'' +
+                ", bookIntro='" + bookIntro + '\'' +
+                ", authorIntro='" + authorIntro + '\'' +
+                ", content='" + content + '\'' +
+                ", number=" + number +
+//                ", tags=" + tags +
+                '}';
+    }
 }
