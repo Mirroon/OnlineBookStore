@@ -1,5 +1,6 @@
 package com.scut.onlinebookstore.controller.BookInfoController;
 
+import com.fasterxml.jackson.databind.util.Converter;
 import com.scut.onlinebookstore.models.Book;
 import com.scut.onlinebookstore.service.BookService;
 import com.sun.javafx.collections.MappingChange;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,12 +27,30 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("/info")
+    @RequestMapping("/exactserch")
     @ResponseBody
-    public JSONObject getBookInfo(@RequestBody HashMap map)throws Exception{
+    public JSONObject exactSearch(@RequestBody HashMap map)throws Exception{
         //获取前端传递的bookIsbn参数
         String bookIsbn = (String) map.get("ISBN");
+        String bookAuthor = (String) map.get("author");
+        String bookCategory = (String) map.get("category");
+        List<Book> resultList = new ArrayList<>();
         Book book = bookService.findByIsbn(bookIsbn);
+        if(book!=null) {
+            resultList.add(bookService.findByIsbn(bookIsbn));
+        }
+        List<Book> tempList = bookService.findByAuthor(bookAuthor);
+        if(tempList.size()!=0){
+            resultList.addAll(tempList);
+        }
+        tempList = bookService.findByAuthor(bookAuthor);
+        if(tempList.size()!=0){
+            resultList.addAll(tempList);
+        }
+        tempList = bookService.findByCategory(bookCategory);
+        if(tempList.size()!=0){
+            resultList.addAll(tempList);
+        }
         String string = book.toString();
         string = string.replace("\n", "<br/>");
         JSONObject jsonObject =  JSONObject.fromObject(string);
@@ -38,15 +59,13 @@ public class BookController {
         return jsonObject;
     }
 
-    @RequestMapping("/test")
-    public String test(@RequestBody Map map)throws Exception{
-        return "Response!";
-    }
+    private JSONObject bookInfoToJson(List<Book> list) throws Exception{
+        JSONObject jsonObject = new JSONObject();
+        for(Book){
+            String string = list.get(i).toString();
 
-    @RequestMapping
-    public String home() {
-        return "Hello World!";
-    }
+        }
 
+    }
 
 }
