@@ -1,6 +1,6 @@
 package com.scut.onlinebookstore.serviceimpl;
 
-import com.scut.onlinebookstore.dao.BookDao;
+import com.scut.onlinebookstore.DAO.BookDao;
 import com.scut.onlinebookstore.models.Book;
 import com.scut.onlinebookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.scut.onlinebookstore.dao;
+package com.scut.onlinebookstore.DAO;
 
 import com.scut.onlinebookstore.models.User;
 import org.apache.ibatis.annotations.Mapper;

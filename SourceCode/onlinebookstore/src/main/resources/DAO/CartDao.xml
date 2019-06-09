@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scut.onlinebookstore.dao.BookDao">
+    <resultMap id="bookMap" type="com.scut.onlinebookstore.models.Book">
+        <id column="ISBN" property="isbn" />
+        <result column="name" property="name" />
+        <result column="author" property="author" />
+        <result column="translator" property="translator" />
+        <result column="publisher" property="publisher" />
+        <result column="publish_date" property="publishDate" />
+        <result column="price" property="price" />
+        <result column="number" property="number" />
+        <result column="book_intro" property="bookIntro" />
+        <result column="author_intro" property="authorIntro" />
+        <result column="content" property="content" />
+        <result column="onshow" property="onShow" />
+        <result column="onsale" property="onSale" />
+    </resultMap>
+
+    <!-- delete book by isbn   -->
+    <delete id="deleteBook" parameterType="String" >
+        DELETE FROM Book WHERE ISBN=#{bookIsbn}
+    </delete>
+
+    <update id="updateBook" parameterType="com.scut.onlinebookstore.models.Book">
+        UPDATE Book
+        <set>
+            <if test="name!=null and name!=''">name=#{uname}</if>
+            <if test="author!=null and author!=''">author=#{author}</if>
+            <if test="translator!=null and translator!=''">translator=#{translator}</if>
+            <if test="publisher!=null and publisher!=''">publisher=#{publisher}</if>
+            <if test="publish_date!=null and publish_date!=''">publish_date=#{publishDate}</if>
+            <if test="price!=null">price=#{price}</if>
+            <if test="number!=null and number!=''">number=#{number}</if>
+            <if test="book_intro!=null and book_intro!=''">book_intro=#{bookIntro}</if>
+            <if test="auth_intro!=null and auth_intro!=''">auth_intro=#{authIntro}</if>
+            <if test="content!=null and content!=''">content=#{content}</if>
+            <if test="onshow!=null">onshow=#{onshow}</if>
+            <if test="onsale!=null">onsale=#{onsale}</if>
+        </set>
+        WHERE ISBN=#{ISBN}
+    </update>
+
+    <insert id="insertBook" parameterType="com.scut.onlinebookstore.models.Book">
+        INSERT INTO Book(ISBN, name, author, translator, publisher, publish_date, price, cover, book_intro, auth_intro,
+                         content, onshow, onsale)
+        VALUES (#{ISBN},#{name},#{author},#{translator},#{publisher},#{publishDate},#{price},#{cover},#{bookIntro},
+                #{authIntro},#{content},#{onshow},#{onsale})
+    </insert>
+
+    <select id="findBookByIsbn" parameterType="String" resultType="com.scut.onlinebookstore.models.Book" resultMap="bookMap">
+        SELECT *
+        FROM Book
+        WHERE ISBN = #{bookIsbn}
+    </select>
+    
+    <select id="selectAll" resultMap="bookMap">
+        SELECT * FROM Book
+    </select>
+
+    <select id="findBookByCategory" resultMap="bookMap">
+        SELECT * FROM Book WHERE ISBN in (SELECT ISBN from Book_Tag where Tag=#{bookCategory})
+    </select>
+
+    <select id="findBookByAuthor" resultMap="bookMap">
+        SELECT * FROM Book WHERE author=#{bookAuthor}
+    </select>
+
+</mapper>
