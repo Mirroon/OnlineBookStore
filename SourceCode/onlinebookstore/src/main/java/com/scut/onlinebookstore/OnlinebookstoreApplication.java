@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author FatCat
  */
-
-@MapperScan("com.scut.onlinebookstore.DAO")
+//@MapperScan("com.scut.onlinebookstore.DAO")
 @SpringBootApplication
 public class OnlinebookstoreApplication {
 
