@@ -59,13 +59,14 @@ public class BookController {
         return jsonObject;
     }
 
-    private JSONObject bookInfoToJson(List<Book> list) throws Exception{
-        JSONObject jsonObject = new JSONObject();
-        for(Book){
-            String string = list.get(i).toString();
 
-        }
-
-    }
-
+//    private JSONObject bookInfoToJson(List<Book> list) throws Exception{
+//        JSONObject jsonObject = new JSONObject();
+//        for(Book){
+//            String string = list.get(i).toString();
+//
+//        }
+//
+//    }
+//
 }
