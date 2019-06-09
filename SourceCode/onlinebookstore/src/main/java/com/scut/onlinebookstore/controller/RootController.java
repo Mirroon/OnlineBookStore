@@ -12,8 +12,8 @@ public class RootController {
         return "Hello World!";
     }
 
-    @RequestMapping("user")
-    public String user(){
-        return new VisitorController();
-    }
+//    @RequestMapping("user")
+//    public String user(){
+//        return new VisitorController();
+//    }
 }
