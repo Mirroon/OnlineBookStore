@@ -33,23 +33,24 @@
             <if test="price!=null">price=#{price}</if>
             <if test="number!=null and number!=''">number=#{number}</if>
             <if test="book_intro!=null and book_intro!=''">book_intro=#{bookIntro}</if>
-            <if test="auth_intro!=null and auth_intro!=''">auth_intro=#{authIntro}</if>
+            <if test="author_intro!=null and author_intro!=''">author_intro=#{authorIntro}</if>
             <if test="content!=null and content!=''">content=#{content}</if>
-            <if test="onshow!=null">onshow=#{onshow}</if>
-            <if test="onsale!=null">onsale=#{onsale}</if>
+            <if test="onshow!=null">onshow=#{onShow}</if>
+            <if test="onsale!=null">onsale=#{onSale}</if>
         </set>
         WHERE ISBN=#{ISBN}
     </update>
 
     <insert id="insertBook" parameterType="com.scut.onlinebookstore.models.Book">
-        INSERT INTO Book(ISBN, name, author, translator, publisher, publish_date, price, cover, book_intro, auth_intro,
+        INSERT INTO Book(ISBN, name, author, translator, publisher, publish_date, price, cover, book_intro, author_intro,
                          content, onshow, onsale)
         VALUES (#{ISBN},#{name},#{author},#{translator},#{publisher},#{publishDate},#{price},#{cover},#{bookIntro},
-                #{authIntro},#{content},#{onshow},#{onsale})
+                #{authorIntro},#{content},#{onshow},#{onsale})
     </insert>
 
-    <select id="findBookByIsbn" parameterType="String" resultType="com.scut.onlinebookstore.models.Book" resultMap="bookMap">
-        SELECT *
+    <select id="findBookByIsbn" parameterType="String" resultMap="bookMap">
+        SELECT ISBN, name, author, translator, publisher, publish_date, price, book_intro, author_intro,
+                content, onshow, onsale,number
         FROM Book
         WHERE ISBN = #{bookIsbn}
     </select>
@@ -58,12 +59,22 @@
         SELECT * FROM Book
     </select>
 
-    <select id="findBookByCategory" resultMap="bookMap">
+    <select id="findBookByCategory" parameterType="String" resultMap="bookMap">
         SELECT * FROM Book WHERE ISBN in (SELECT ISBN from Book_Tag where Tag=#{bookCategory})
     </select>
 
-    <select id="findBookByAuthor" resultMap="bookMap">
-        SELECT * FROM Book WHERE author=#{bookAuthor}
+    <select id="findBookByAuthor" parameterType="String"  resultMap="bookMap">
+        SELECT ISBN, name, author, translator, publisher, publish_date, price, book_intro, author_intro,
+               content, onshow, onsale,number
+        FROM Book
+        WHERE author like #{bookAuthor}
+    </select>
+
+    <select id="findBookByName" parameterType="String"  resultMap="bookMap">
+        SELECT ISBN, name, author, translator, publisher, publish_date, price, book_intro, author_intro,
+               content, onshow, onsale,number
+        FROM Book
+        WHERE name like #{bookName}
     </select>
 
 </mapper>

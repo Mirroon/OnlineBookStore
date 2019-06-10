@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scut.onlinebookstore.dao.CategoryDao">
+    <select id="getMainCategory" resultType="com.scut.onlinebookstore.models.Category">
+        SELECT tag, count(*) as number from Book_Tag GROUP BY tag HAVING number >100
+    </select>
+
+    <select id="getNumByTag" parameterType="String" resultType="Integer">
+        SELECT count(*) as number from Book_Tag WHERE tag=#{tag}
+    </select>
+</mapper>
