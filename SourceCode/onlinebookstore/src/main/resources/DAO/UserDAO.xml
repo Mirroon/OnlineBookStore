@@ -1,36 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.UserMapper">
-
+<mapper namespace="com.scut.onlinebookstore.DAO.UserDAO">
+    <resultMap id="User" type="com.scut.onlinebookstore.models.User">
+        <id column="userID" property="userID" />
+        <result column="username" property="username" />
+        <result column="password" property="password" />
+        <result column="isAdmin" property="isAdmin" />
+        <result column="loginState" property="loginState" />
+        <result column="name" property="name" />
+        <result column="address" property="address" />
+        <result column="phone" property="phone" />
+        <result column="postcode" property="postcode" />
+    </resultMap>
     <!-- insert user -->
-    <insert id="insert" parameterType="domains.User">
-        INSERT INTO Users(userID, username, password, isAdmin, loginState, name, address, phone, postcode)
-        VALUES(${userID}, ${username}, ${password}, ${isAdmin}, ${loginState}, ${name}, ${address}, ${phone}, ${postcode})
+    <insert id="insert" parameterType="com.scut.onlinebookstore.models.User">
+        INSERT INTO Users(username, password, isAdmin, loginState, name, address, phone, postcode)
+        VALUES(#{username}, #{password}, #{isAdmin}, #{loginState}, #{name}, #{address}, #{phone}, #{postcode})
     </insert>
 
     <!-- update user -->
-    <update id="update" parameterType="domains.User">
+    <update id="update" parameterType="com.scut.onlinebookstore.models.User">
         UPDATE Users
-        SET password=${password}, isAdmin=${isAdmin}, loginState=${loginState}, name=${name}, address=${address}, phone=${phone}, postcode=${postcode}
-        WHERE userID=${userID}
+        SET password=#{password}, isAdmin=#{isAdmin}, loginState=#{loginState}, name=#{name}, address=#{address}, phone=#{phone}, postcode=#{postcode}
+        WHERE userID=#{userID}
     </update>
 
     <!-- find user by userID-->
-    <select id="findByUserID" parameterType="int" resultType="smm.springboot_ftl.bean.User">
+    <select id="findByUserID" parameterType="int" resultType="com.scut.onlinebookstore.models.User">
         SELECT userID, username, password, isAdmin, loginState, name, address, phone, postcode
         FROM Users
-        WHERE userID = ${userId}
+        WHERE userID = #{userId}
     </select>
 
     <!-- find user by username-->
-    <select id="findByUsername" parameterType="int" resultType="smm.springboot_ftl.bean.User">
+    <select id="findByUsername" parameterType="String" resultType="com.scut.onlinebookstore.models.User">
         SELECT userID, username, password, isAdmin, loginState, name, address, phone, postcode
         FROM Users
-        WHERE username = ${username}
+        WHERE username = #{username}
     </select>
 
     <!-- delete user -->
     <delete id="delete" parameterType="int">
-        DELETE FROM Users WHERE userID=${userID}
+        DELETE FROM Users WHERE userID=#{userID}
     </delete>
+
 </mapper>

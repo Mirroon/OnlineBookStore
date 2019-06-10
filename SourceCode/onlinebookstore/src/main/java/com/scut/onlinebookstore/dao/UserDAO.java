@@ -1,7 +1,7 @@
 package com.scut.onlinebookstore.DAO;
 
 import com.scut.onlinebookstore.models.User;
-import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author: 何健聪
@@ -9,7 +9,8 @@ import org.apache.ibatis.annotations.Mapper;
  * @version: 1.0
  * @description:
  */
-@Mapper
+
+@Repository
 public interface UserDAO {
     public void insert(User user);
 

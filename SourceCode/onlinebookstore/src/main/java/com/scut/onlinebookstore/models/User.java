@@ -25,8 +25,29 @@ public class User {
 
     private String postcode;
 
-    public User() {
+    public static final User nullUser = new User();
 
+    public User() {
+        userID = -1;
+        username = "null";
+        password = "null";
+        isAdmin = false;
+        loginState = false;
+        name = "";
+        address = "";
+        phone = "";
+        postcode = "";
+    }
+
+    public User(String pUsername, String pPassword, boolean pIsAdmin, boolean pLoginState, String pName, String pAddress, String pPhone, String pPostcode){
+        setUsername(pUsername);
+        setPassword(pPassword);
+        isAdmin = pIsAdmin;
+        loginState = pLoginState;
+        setName(pName);
+        setAddress(pAddress);
+        setPhone(pPhone);
+        setPostcode(pPostcode);
     }
 
     public Integer getUserID() {
@@ -69,16 +90,16 @@ public class User {
         return isAdmin;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
     public boolean isLoginState() {
         return loginState;
     }
 
     public void setLoginState(boolean loginState) {
         this.loginState = loginState;
+    }
+
+    public boolean getLoginState(){
+        return loginState;
     }
 
     public String getName() {
@@ -131,7 +152,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{userID:"+ userID + ", username:" + username + ", password:" +
+        return "{userID:"+ userID + ", username:" + username + ", password:" +
                 password + ", isAdmin:" + isAdmin + ", loginState:" + loginState +
                 ", name:" + name + ", address:" + address + ", phone:" + phone +
                 ", postcode:" + postcode + "}";

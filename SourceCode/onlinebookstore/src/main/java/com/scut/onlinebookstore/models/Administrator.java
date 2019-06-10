@@ -6,6 +6,6 @@ package com.scut.onlinebookstore.models;
  * @version: 1.0
  * @description:
  */
-public class Anministrator extends User{
+public class Administrator extends User{
 
 }
