@@ -1,4 +1,4 @@
-package com.scut.onlinebookstore.DAO;
+package com.scut.onlinebookstore.dao;
 
 import java.util.List;
 import com.scut.onlinebookstore.models.Book;

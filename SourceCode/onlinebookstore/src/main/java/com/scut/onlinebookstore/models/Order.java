@@ -18,7 +18,7 @@ public class Order {
 	private Double totalPrice;
 			
 	private Integer status;
-	//status：1未支付，2待发货，3待收货，4待评价
+	//status：1未支付，2待发货，3待收货，4待评价,-1已取消
 	private String orderTime;
 	
 	

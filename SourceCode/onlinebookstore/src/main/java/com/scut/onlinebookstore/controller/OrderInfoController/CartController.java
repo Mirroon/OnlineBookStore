@@ -17,30 +17,18 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/order")
-public class RootOrderInfoController {
+@RequestMapping("/cart")
+public class CartController {
     @Autowired
-    private OrderService orderService;
+    private CartService cartService;
 
-    @RequestMapping("/exactserch")
+    @RequestMapping("/clearCart")
     @ResponseBody
-    public JSONObject exactSearch(@RequestBody HashMap map)throws Exception{
+    public void clearCart(@RequestBody HashMap map)throws Exception{
 
-    	Integer orderId = (Integer) map.get("orderId");
-        List<OrderItem> resultList = new ArrayList<>();
-        resultList = orderService.findById(orderId);
+    	Integer userId = (Integer) map.get("userId");
+    	cartService.clearCart(userId);
 
-        return orderItemToJson(resultList);
-    }
-    
-    private  JSONObject orderItemToJson(List<OrderItem> list) throws Exception{
-    	JSONObject re = new JSONObject();
-    	re.put("amount", list.size());
-    	for(int i = 0;i < list.size();i++) {
-    		String string = list.get(i).toString();
-    		re.put("item"+i, string);
-    	}
-    	return re;
     }
 
 }

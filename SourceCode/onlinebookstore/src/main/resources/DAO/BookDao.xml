@@ -16,7 +16,7 @@
         <result column="onshow" property="onShow" />
         <result column="onsale" property="onSale" />
     </resultMap>
-
+    
     <!-- delete book by isbn   -->
     <delete id="deleteBook" parameterType="String" >
         DELETE FROM Book WHERE ISBN=#{bookIsbn}

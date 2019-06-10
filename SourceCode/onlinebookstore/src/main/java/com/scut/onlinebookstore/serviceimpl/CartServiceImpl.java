@@ -3,7 +3,7 @@ package com.scut.onlinebookstore.serviceimpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.scut.onlinebookstore.service.*;
-import com.scut.onlinebookstore.DAO.*;
+import com.scut.onlinebookstore.dao.*;
 
 @Service
 public class CartServiceImpl implements CartService{
@@ -18,8 +18,8 @@ public class CartServiceImpl implements CartService{
 	}
 	
     @Override
-	public void removeFromCart(Integer userId, Integer bookISBN, Integer count) {
-		cartDao.removeFromCart(userId, bookISBN, count);
+	public void removeFromCart(Integer userId, Integer bookISBN) {
+		cartDao.removeFromCart(userId, bookISBN);
 	}
 	
     @Override
