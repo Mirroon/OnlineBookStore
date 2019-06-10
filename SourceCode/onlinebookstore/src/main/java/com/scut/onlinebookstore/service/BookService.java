@@ -21,6 +21,14 @@ public interface BookService {
     Book findByIsbn(String bookIsbn);
 
     /**
+     * 查找指定书名的所有图书
+     *
+     * @param bookName 书名
+     * @return 图书列表
+     */
+    List<Book> findByName(String bookName);
+
+    /**
      * 查找指定作者的所有图书
      *
      * @param bookAuthor 图书的作者

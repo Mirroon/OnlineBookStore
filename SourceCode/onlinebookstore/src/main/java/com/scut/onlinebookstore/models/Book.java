@@ -11,9 +11,9 @@ public class Book {
 
     private String isbn;
 
-    private Boolean onShow = true;
+    private Boolean onShow;
 
-    private Boolean onSale = true;
+    private Boolean onSale;
 
     private String name;
 
